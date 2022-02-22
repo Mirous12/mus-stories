@@ -1,0 +1,42 @@
+{
+    "name": "Heart of a Champion",
+    "structure":
+    [
+        {
+            "type": "single",
+            "time_use": "1",
+            "time_appear": "0",
+            "place": "up"
+        },
+        {
+            "type": "single",
+            "time_use": "2",
+            "time_appear": "1",
+            "place": "up"
+        },
+        {
+            "type": "single",
+            "time_use": "3",
+            "time_appear": "2",
+            "place": "up"
+        },
+        {
+            "type": "single",
+            "time_use": "3.5",
+            "time_appear": "2.5",
+            "place": "down"
+        },
+        {
+            "type": "single",
+            "time_use": "4",
+            "time_appear": "3",
+            "place": "up"
+        },
+        {
+            "type": "single",
+            "time_use": "4.5",
+            "time_appear": "3.5",
+            "place": "down"
+        }
+    ]
+}
