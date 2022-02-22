@@ -37,6 +37,30 @@
             "time_use": "4.5",
             "time_appear": "3.5",
             "place": "down"
+        },
+        {
+            "type": "single",
+            "time_use": "6",
+            "time_appear": "5",
+            "place": "up"
+        },
+        {
+            "type": "single",
+            "time_use": "6.2",
+            "time_appear": "5.2",
+            "place": "up"
+        },
+        {
+            "type": "single",
+            "time_use": "6.4",
+            "time_appear": "5.4",
+            "place": "up"
+        },
+        {
+            "type": "single",
+            "time_use": "6.6",
+            "time_appear": "5.6",
+            "place": "up"
         }
     ]
 }

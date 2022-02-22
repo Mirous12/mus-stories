@@ -51,6 +51,7 @@ scale = Vector2( 0.523342, 0.423719 )
 texture = ExtResource( 2 )
 
 [node name="GameNode" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 6 )
 
 [node name="MusicMain" type="AudioStreamPlayer2D" parent="GameNode"]

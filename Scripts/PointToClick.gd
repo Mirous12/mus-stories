@@ -48,8 +48,8 @@ func proceed(currentTime):
 		reporter.onReport(GlobalTypes.EventType.TIME_FAIL, reportObj)
 	
 func countTimeRange():
-	timeRangeLow = timeUse - 0.1
-	timeRangeHigh = timeUse + 0.1
+	timeRangeLow = timeUse - 0.12
+	timeRangeHigh = timeUse + 0.12
 	
 func checkCurrentTime(time) -> bool:
 	return time <= timeRangeHigh && time >= timeRangeLow
@@ -66,7 +66,6 @@ func onEvent(eventType, eventInfo):
 		if checkCurrentTime(currentTime) && posClicked == self.place:
 			reporter.onReport(GlobalTypes.EventType.CLICK_SUCCESS, reportObj)
 		elif abs(currentTime - timeUse) < 0.11:
-			print("Failed to click!")
 			reporter.onReport(GlobalTypes.EventType.CLICK_FAIL, reportObj)
 
 func getPlace() -> String:
