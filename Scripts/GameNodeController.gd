@@ -133,23 +133,18 @@ func onReport(enumType, params):
 
 
 func _on_ButtonUpButton_button_down():
-	print("Clicked!")
 	var params = {}
 	params.place = "up"
 	params.currentTime = float(self.currentTime)
 	
 	var upSended = false
-	var downSended = false
 	
 	for gameElement in gameElements:
-		if gameElement.getPlace() == "up" && upSended == false:
+		if gameElement.getPlace() == "up":
 			gameElement.onEvent(GlobalTypes.EventType.CLICK_DOWN, params)
 			upSended = true
-		elif gameElement.getPlace() == "down" && downSended == false:
-			gameElement.onEvent(GlobalTypes.EventType.CLICK_DOWN, params)
-			downSended = true
 			
-		if upSended && downSended:
+		if upSended:
 			break
 
 func endGame():
@@ -162,3 +157,19 @@ func endGame():
 
 func _on_GameEndTimer_timeout():
 	endGame()
+
+
+func _on_ButtonDownButton_button_down():
+	var params = {}
+	params.place = "down"
+	params.currentTime = float(self.currentTime)
+	
+	var downSended = false
+	
+	for gameElement in gameElements:
+		if gameElement.getPlace() == "down":
+			gameElement.onEvent(GlobalTypes.EventType.CLICK_DOWN, params)
+			downSended = true
+			
+		if downSended:
+			break
