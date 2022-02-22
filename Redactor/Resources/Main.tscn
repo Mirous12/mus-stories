@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources/new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://RedactorController.gd" type="Script" id=2]
+[ext_resource path="res://Resources/button_play.png" type="Texture" id=3]
+[ext_resource path="res://Resources/button_pause.png" type="Texture" id=4]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ChooseMusic" type="Label" parent="."]
+margin_right = 374.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 1 )
+text = "Choose music file..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonChooseMusic" type="Button" parent="ChooseMusic"]
+margin_right = 209.0
+margin_bottom = 37.0
+flat = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_left = 49.0
+margin_top = 56.0
+margin_right = 975.0
+margin_bottom = 564.0
+window_title = "Сохранить файл"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Playlist" type="Node2D" parent="."]
+visible = false
+position = Vector2( 393, 18 )
+
+[node name="SpritePlay" type="Sprite" parent="Playlist"]
+position = Vector2( 29, 14 )
+scale = Vector2( 0.0724, 0.0725283 )
+texture = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="Playlist/SpritePlay"]
+margin_left = -318.0
+margin_top = -331.0
+margin_right = 331.0
+margin_bottom = 317.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SongName" type="Label" parent="Playlist"]
+margin_left = 64.0
+margin_top = -10.0
+margin_right = 628.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 1 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpritePause" type="Sprite" parent="Playlist"]
+visible = false
+position = Vector2( 28.125, 13.25 )
+scale = Vector2( 0.0223389, 0.0222168 )
+texture = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="Playlist/SpritePause"]
+margin_left = -1125.0
+margin_top = -1047.0
+margin_right = 1114.0
+margin_bottom = 1024.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editor" type="Node2D" parent="."]
+position = Vector2( 485, 283 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Editor"]
+margin_left = -484.0
+margin_top = -60.0
+margin_right = -272.0
+margin_bottom = 313.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Editor/ScrollContainer"]
+margin_right = 212.0
+margin_bottom = 373.0
+rect_min_size = Vector2( 212, 373 )
+custom_constants/separation = 2
+
+[node name="AddNewElement" type="Label" parent="Editor"]
+margin_left = -485.0
+margin_top = -88.0
+margin_right = -273.0
+margin_bottom = -60.0
+custom_fonts/font = ExtResource( 1 )
+text = "Add new element"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Editor/AddNewElement"]
+margin_right = 210.0
+margin_bottom = 30.0
+flat = true
+
+[connection signal="pressed" from="ChooseMusic/ButtonChooseMusic" to="." method="_on_ButtonChooseMusic_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="button_down" from="Playlist/SpritePlay/Button" to="." method="onButtonPlayPressed"]
+[connection signal="button_down" from="Playlist/SpritePause/Button" to="." method="onButtonPausePressed"]
+[connection signal="button_down" from="Editor/AddNewElement/Button" to="." method="onButtonAddNewClicked"]
