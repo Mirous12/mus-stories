@@ -19,6 +19,14 @@ func setInfo(info):
 	timeUse = info.time_use
 	docString = info.doc_string
 	setNameDescription()
+	
+func getInfo() -> Dictionary:
+	var element = {}
+	element.id = id
+	element.type = type
+	element.timeAppear = timeAppear
+	element.timeUse = timeUse
+	return element
 
 func setNameDescription():
 	var label = get_node("Label")

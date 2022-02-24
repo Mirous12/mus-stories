@@ -27,7 +27,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonPanelElement" type="Button" parent="."]
+[node name="ButtonPanelElement" type="Button" parent="Label"]
 margin_right = 213.0
 margin_bottom = 30.0
 flat = true

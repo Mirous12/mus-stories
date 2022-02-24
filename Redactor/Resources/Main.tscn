@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Resources/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://RedactorController.gd" type="Script" id=2]
 [ext_resource path="res://Resources/button_play.png" type="Texture" id=3]
 [ext_resource path="res://Resources/button_pause.png" type="Texture" id=4]
+[ext_resource path="res://Resources/ElementInfoController.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -31,6 +44,18 @@ window_title = "Сохранить файл"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_left = 302.0
+margin_top = 254.0
+margin_right = 446.0
+margin_bottom = 403.0
+
+[node name="PopupModeChoose" type="PopupMenu" parent="."]
+margin_left = 154.0
+margin_top = 122.0
+margin_right = 233.0
+margin_bottom = 174.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
@@ -116,8 +141,152 @@ margin_right = 210.0
 margin_bottom = 30.0
 flat = true
 
+[node name="Timer" type="Label" parent="Editor"]
+margin_left = -478.0
+margin_top = -133.0
+margin_right = -285.0
+margin_bottom = -94.0
+custom_fonts/font = ExtResource( 1 )
+text = "0.00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTimerMode" type="Button" parent="Editor"]
+margin_left = -344.0
+margin_top = -193.0
+margin_right = -242.0
+margin_bottom = -154.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMode" type="Label" parent="Editor"]
+margin_left = -482.0
+margin_top = -189.0
+margin_right = -347.0
+margin_bottom = -160.0
+custom_fonts/font = ExtResource( 1 )
+text = "Timer Mode:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelModeSelected" type="Label" parent="Editor"]
+margin_left = -343.0
+margin_top = -188.0
+margin_right = -244.0
+margin_bottom = -159.0
+custom_fonts/font = ExtResource( 1 )
+text = "Appear"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ElementInfo" type="Node2D" parent="Editor"]
+visible = false
+position = Vector2( -4, -25 )
+script = ExtResource( 5 )
+
+[node name="LabelType" type="Label" parent="Editor/ElementInfo"]
+margin_left = -239.0
+margin_top = -36.0
+margin_right = -169.0
+margin_bottom = -3.0
+custom_fonts/font = ExtResource( 1 )
+text = "Type:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelTypeSelected" type="Label" parent="Editor/ElementInfo"]
+margin_left = -170.0
+margin_top = -36.0
+margin_right = -45.0
+margin_bottom = -2.0
+custom_fonts/font = ExtResource( 1 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonLabelSelected" type="Button" parent="Editor/ElementInfo/LabelTypeSelected"]
+margin_left = -1.0
+margin_top = 2.0
+margin_right = 109.0
+margin_bottom = 33.0
+flat = true
+
+[node name="LabelAppear" type="Label" parent="Editor/ElementInfo"]
+margin_left = -234.0
+margin_top = 7.0
+margin_right = -144.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 1 )
+text = "Appear:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AppearLineEdit" type="LineEdit" parent="Editor/ElementInfo"]
+margin_left = -133.0
+margin_top = 3.0
+margin_right = -27.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+max_length = 6
+context_menu_enabled = false
+placeholder_text = "0.00"
+placeholder_alpha = 0.279
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelUse" type="Label" parent="Editor/ElementInfo"]
+margin_left = -239.0
+margin_top = 50.0
+margin_right = -141.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 1 )
+text = "Time use:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UseLine" type="LineEdit" parent="Editor/ElementInfo"]
+margin_left = -133.0
+margin_top = 50.0
+margin_right = -37.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+max_length = 6
+placeholder_text = "0.00"
+placeholder_alpha = 0.352
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="ChooseMusic/ButtonChooseMusic" to="." method="_on_ButtonChooseMusic_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="id_pressed" from="PopupMenu" to="Editor/ElementInfo" method="PopupMenuChoosen"]
+[connection signal="id_pressed" from="PopupModeChoose" to="Editor/ElementInfo" method="onModeChoose"]
 [connection signal="button_down" from="Playlist/SpritePlay/Button" to="." method="onButtonPlayPressed"]
 [connection signal="button_down" from="Playlist/SpritePause/Button" to="." method="onButtonPausePressed"]
 [connection signal="button_down" from="Editor/AddNewElement/Button" to="." method="onButtonAddNewClicked"]
+[connection signal="button_down" from="Editor/ButtonTimerMode" to="Editor/ElementInfo" method="onButtomModePressed"]
+[connection signal="button_down" from="Editor/ElementInfo/LabelTypeSelected/ButtonLabelSelected" to="Editor/ElementInfo" method="ButtonLabelSelectedClicked"]
+[connection signal="text_changed" from="Editor/ElementInfo/AppearLineEdit" to="Editor/ElementInfo" method="AppearLineEdit_text_changed"]
+[connection signal="text_changed" from="Editor/ElementInfo/UseLine" to="Editor/ElementInfo" method="UseLine_text_changed"]
